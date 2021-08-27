@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <script src="generator.js" ></script>
+  <script src="proxy.js"></script>
+  <script src="template-string.js"></script>
+  <style>
+    .section {
+      border: 1px #999 solid;
+      padding: 20px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h3 class="title">Template String</h3>
+    <input name="color" type="color" id="color-input"/>
+    <button id="colorize-btn">Colorize</button>
+    <button id="hidden-btn">Hidden</button>
+    <p id="output"></p>
+  </div>
+
+  <div class="section">
+    <h3 class="title">Generator</h3>
+    <p class="subtitle">Fibonacci</p>
+    <button id="fib-btn" >Next</button>
+    (<span id="fib-index"></span>) = <span id="fib-value"></span>
+  </div>
+
+  <div class="section">
+    <form name="userForm">
+      <h3 class="title">Proxy</h3>
+      <input name="name" placeholder="Name" />
+      <input name="age" type="number" placeholder="Age" min="0" />
+      <button type="submit">Change!</button>
+    </form>
+    <p>Name: <span id="name-span"></span>, Age: <span id="age-span"></span></p>
+  </div>
+</body>
+<script>
+
+  const name = "Jeferson"
+  const age = 19
+  const output = document.querySelector('#output')
+  const colorInput = document.getElementById('color-input')
+  document.getElementById('hidden-btn').addEventListener('click', () => {
+    output.innerHTML = hidden`My name is ${name}, I'am ${age} year old`
+  })
+  document.getElementById('colorize-btn').addEventListener('click', () => {
+    output.innerHTML = colorize(colorInput.value)`My name is ${name}, I'am ${age} year old`
+  })
+
+  const fibGenerator = createFibGenerator()
+  const fibIndexSpan = document.getElementById('fib-index')
+  const fibValueSpan = document.getElementById('fib-value')
+  document.getElementById('fib-btn').addEventListener('click', () => {
+    const {value, index} = fibGenerator.next().value
+    fibIndexSpan.textContent = index;
+    fibValueSpan.textContent = value
+  })
+
+
+  const nameSpan = document.getElementById('name-span')
+  const ageSpan = document.getElementById('age-span')
+
+  const userViewModel = new ViewModel({
+    name: '',
+    age: 0
+  })
+
+  userViewModel.addObserve('name', (value) => {
+    nameSpan.innerHTML = value
+  })
+  userViewModel.addObserve('age', (value) => {
+    ageSpan.innerHTML = value <= 0 ? 'Não informado' : value
+  })
+
+  document.forms.userForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const name = event.target[0].value
+    const age = Number(event.target[1].value || -1)
+    userViewModel.data.name = name;
+    userViewModel.data.age = age;
+  })
+</script>
+</html>
