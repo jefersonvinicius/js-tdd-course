@@ -1,7 +1,7 @@
-const webpack = require('webpack');
+const nodeEnv = process.env.NODE_ENV || 'production';
 
 module.exports = {
-  mode: 'development',
+  mode: nodeEnv,
   entry: './src/app.js',
   output: {
     filename: './build.js',
@@ -21,6 +21,6 @@ module.exports = {
     ],
   },
   optimization: {
-    minimize: true,
+    minimize: nodeEnv === 'production' ? true : false,
   },
 };
