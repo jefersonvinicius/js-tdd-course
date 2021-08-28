@@ -1,7 +1,9 @@
 const nodeEnv = process.env.NODE_ENV || 'production';
+const isProductionBuild = nodeEnv === 'production';
 
 module.exports = {
   mode: nodeEnv,
+  devtool: isProductionBuild ? undefined : 'source-map',
   entry: './src/app.js',
   output: {
     filename: './build.js',
