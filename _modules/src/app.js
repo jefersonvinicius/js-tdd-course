@@ -10,7 +10,7 @@ const array2 = [5, 6, 7, 8];
 
 console.log(union(array1, array2));
 console.log(sum(1, 2));
-console.log(multiy(1, 2));
+console.log(multiply(1, 2));
 const square = new Square(10);
 console.log(square.area());
 const circle = new Circle(3);

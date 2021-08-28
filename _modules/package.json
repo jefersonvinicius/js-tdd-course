@@ -4,15 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:production": "NODE_ENV=production webpack",
-    "build:development": "NODE_ENV=development webpack --watch"
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack serve"
   },
   "dependencies": {
     "compression-webpack-plugin": "^8.0.1",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "webpack": "^5.51.1"
+    "webpack": "^5.51.1",
+    "webpack-dev-server": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

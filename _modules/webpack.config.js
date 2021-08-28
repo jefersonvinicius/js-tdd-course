@@ -1,3 +1,4 @@
+const path = require('path');
 const nodeEnv = process.env.NODE_ENV || 'production';
 const isProductionBuild = nodeEnv === 'production';
 
@@ -7,6 +8,13 @@ module.exports = {
   entry: './src/app.js',
   output: {
     filename: './build.js',
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9000,
   },
   module: {
     rules: [
