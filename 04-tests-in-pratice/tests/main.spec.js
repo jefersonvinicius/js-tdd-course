@@ -23,4 +23,40 @@ describe('Calc', () => {
       expect(calc.mult).to.be.a('function');
     });
   });
+
+  describe('Sum', () => {
+    it('should return 4 when sum 2 + 2', () => {
+      expect(calc.sum(2, 2)).to.be.equal(4);
+    });
+  });
+
+  describe('Sub', () => {
+    it('should return 4 when sum 6 - 2', () => {
+      expect(calc.sub(6, 2)).to.be.equal(4);
+    });
+    it('should return -4 when sum 6 - 10', () => {
+      expect(calc.sub(6, 10)).to.be.equal(-4);
+    });
+  });
+
+  describe('Mult', () => {
+    it('should return 12 when sum 6 * 2', () => {
+      expect(calc.mult(6, 2)).to.be.equal(12);
+    });
+  });
+
+  describe('Div', () => {
+    it('should return 4 when sum 8 / 2', () => {
+      expect(calc.div(8, 2)).to.be.equal(4);
+    });
+    it('should get error when divide by zero', () => {
+      // const error = new calc.DivisionByZero();
+      // expect(error).to.be.an.instanceOf(calc.DivisionByZero);
+      try {
+        calc.div(10, 0);
+      } catch (error) {
+        expect(error).to.be.an.instanceOf(calc.DivisionByZero);
+      }
+    });
+  });
 });
