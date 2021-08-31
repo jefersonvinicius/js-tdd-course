@@ -15,10 +15,17 @@
   "author": "Jeferson Vinicius",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/register": "^7.15.3",
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "mocha": "^9.1.1"
+  },
+  "dependencies": {
+    "core-js": "^3.16.4",
+    "regenerator-runtime": "^0.13.9"
   }
 }
