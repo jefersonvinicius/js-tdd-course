@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/*.js",
     "test": "mocha tests/**/*.spec.js",
-    "test:coverage": "nyc --reporter=html mocha tests/**/*.spec.js"
+    "test:coverage": "nyc mocha tests/**/*.spec.js"
   },
   "keywords": [
     "js",
