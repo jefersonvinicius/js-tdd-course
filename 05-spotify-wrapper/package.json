@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/*.js",
+    "run-file": "babel-node",
     "test": "mocha tests/**/*.spec.js",
     "test:coverage": "nyc mocha tests/**/*.spec.js"
   },
@@ -17,6 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.15.0",
+    "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.0",
     "@babel/register": "^7.15.3",
     "chai": "^4.3.4",
@@ -28,7 +30,10 @@
   "dependencies": {
     "@babel/cli": "^7.14.8",
     "core-js": "^3.16.4",
+    "node-fetch": "2.6.1",
     "nyc": "^15.1.0",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "sinon": "^11.1.2",
+    "sinon-chai": "^3.7.0"
   }
 }

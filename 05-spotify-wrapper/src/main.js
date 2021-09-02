@@ -1,4 +1,6 @@
-export function search() {}
+export function search() {
+  fetch('https://spotify.com');
+}
 
 export function searchAlbums() {}
 
