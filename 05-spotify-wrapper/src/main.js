@@ -1,5 +1,5 @@
-export function search() {
-  fetch('https://spotify.com');
+export function search(query, type) {
+  return fetch(`https://api.spotify.com/v1/search?q=${query}&type=${type}`).then((response) => response.json());
 }
 
 export function searchAlbums() {}
