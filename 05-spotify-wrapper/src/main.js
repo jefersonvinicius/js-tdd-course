@@ -14,4 +14,6 @@ export function searchTracks(query) {
   return search(query, 'track');
 }
 
-export function searchPlaylists() {}
+export function searchPlaylists(query) {
+  return search(query, 'playlist');
+}
