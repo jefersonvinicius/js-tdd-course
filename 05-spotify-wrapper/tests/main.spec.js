@@ -71,4 +71,18 @@ describe('Spotify Wrapper', () => {
       expect(response).to.be.eql({ body: 'json' });
     });
   });
+
+  describe('searchArtist', () => {
+    it('should call fetch', () => {
+      const artists = searchArtists();
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should calls with correct URL', () => {
+      const artists = searchArtists('Tainy');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Tainy&type=artist');
+      const artists2 = searchArtists('Bad');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Bad&type=artist');
+    });
+  });
 });

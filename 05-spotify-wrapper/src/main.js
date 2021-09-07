@@ -4,7 +4,9 @@ export function search(query, type) {
 
 export function searchAlbums() {}
 
-export function searchArtists() {}
+export function searchArtists(query) {
+  return search(query, 'artist');
+}
 
 export function searchTracks() {}
 
