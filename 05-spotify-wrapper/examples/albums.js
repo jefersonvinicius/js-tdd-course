@@ -2,5 +2,13 @@ import { searchAlbums } from '../src/main';
 
 global.fetch = require('node-fetch');
 
-const albums = searchAlbums();
-albums.then((data) => console.log(data)).catch((error) => console.log(error.message));
+function extractArtistsLabelOf(album) {
+  return album.artists.map((art) => art.name).join(', ');
+}
+
+const albums = searchAlbums('bahia');
+albums
+  .then((data) => {
+    console.log(data.albums.items.map((a) => `${a.name} - ${extractArtistsLabelOf(a)}`));
+  })
+  .catch((error) => console.log(error.message));
