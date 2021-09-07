@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import fetch from 'node-fetch';
 
-import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks } from '../src/main';
+import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks, SPOTIFY_TOKEN } from '../src/main';
 
 chai.use(sinonChai);
 
@@ -48,6 +48,13 @@ describe('Spotify Wrapper', () => {
     it('should call fetch function', () => {
       const artists = search();
       expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should send token on header', () => {
+      const artists = search('Tainy', 'artist');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Tainy&type=artist', {
+        headers: { Authorization: `Bearer ${SPOTIFY_TOKEN}` },
+      });
     });
 
     it('should call fetch with correct url', () => {
