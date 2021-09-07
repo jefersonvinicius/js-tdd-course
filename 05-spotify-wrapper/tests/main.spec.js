@@ -85,4 +85,18 @@ describe('Spotify Wrapper', () => {
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Bad&type=artist');
     });
   });
+
+  describe('searchAlbums', () => {
+    it('should call fetch', () => {
+      const albums = searchAlbums();
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should calls with correct URL', () => {
+      const albums = searchAlbums('Tainy');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Tainy&type=album');
+      const albums2 = searchAlbums('Bad');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Bad&type=album');
+    });
+  });
 });
