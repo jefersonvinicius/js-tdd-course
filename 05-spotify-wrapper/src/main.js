@@ -10,6 +10,8 @@ export function searchArtists(query) {
   return search(query, 'artist');
 }
 
-export function searchTracks() {}
+export function searchTracks(query) {
+  return search(query, 'track');
+}
 
 export function searchPlaylists() {}

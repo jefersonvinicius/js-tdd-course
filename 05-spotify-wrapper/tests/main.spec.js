@@ -99,4 +99,18 @@ describe('Spotify Wrapper', () => {
       expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Bad&type=album');
     });
   });
+
+  describe('searchTracks', () => {
+    it('should call fetch', () => {
+      const tracks = searchTracks();
+      expect(fetchedStub).to.have.been.calledOnce;
+    });
+
+    it('should calls with correct URL', () => {
+      const tracks = searchTracks('Tainy');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Tainy&type=track');
+      const tracks2 = searchTracks('Bad');
+      expect(fetchedStub).to.have.been.calledWith('https://api.spotify.com/v1/search?q=Bad&type=track');
+    });
+  });
 });
