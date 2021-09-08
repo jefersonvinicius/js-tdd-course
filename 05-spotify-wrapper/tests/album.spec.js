@@ -69,4 +69,24 @@ describe('Album', () => {
       expect(album).to.be.eql([{ title: 'title 1' }, { title: 'title 2' }]);
     });
   });
+
+  describe('getAlbumsTracks', () => {
+    it('should call fetch method', () => {
+      const albums = getAlbumTracks();
+      expect(fetchStub).to.be.calledOnce;
+    });
+    it('should call fetch with the correct URL', () => {
+      const album = getAlbumTracks('any_id');
+      expect(fetchStub).to.be.calledWith('https://api.spotify.com/v1/albums/any_id/tracks');
+
+      const album2 = getAlbumTracks('any_id_2');
+      expect(fetchStub).to.be.calledWith('https://api.spotify.com/v1/albums/any_id_2/tracks');
+    });
+    it('should return the correct data from promise', async () => {
+      fetchPromise.resolve({ json: () => ({ body: 'response' }) });
+      const album = await getAlbumTracks('any_id');
+      expect(album).to.be.an('object');
+      expect(album).to.be.eql({ body: 'response' });
+    });
+  });
 });
