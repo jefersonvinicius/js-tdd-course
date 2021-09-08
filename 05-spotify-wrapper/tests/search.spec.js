@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import fetch from 'node-fetch';
 
-import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks, SPOTIFY_TOKEN } from '../src/main';
+import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks, SPOTIFY_TOKEN } from '../src/search';
 
 chai.use(sinonChai);
 
