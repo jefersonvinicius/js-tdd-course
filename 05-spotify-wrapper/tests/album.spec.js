@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import { getAlbum, getAlbumTracks } from '../src/album';
+import { getAlbum, getAlbums, getAlbumTracks } from '../src/album';
 
 chai.use(sinonChai);
 
@@ -47,6 +47,26 @@ describe('Album', () => {
       const album = await getAlbum('any_id_1');
       expect(album).to.be.an('object');
       expect(album).to.be.eql({ album: 'response' });
+    });
+  });
+
+  describe('getAlbums', () => {
+    it('should call fetch method', () => {
+      const albums = getAlbums();
+      expect(fetchStub).to.be.calledOnce;
+    });
+    it('should call fetch with the correct URL', () => {
+      const album = getAlbums(['any_id_1', 'any_id_2']);
+      expect(fetchStub).to.be.calledWith('https://api.spotify.com/v1/albums/?ids=any_id_1,any_id_2');
+
+      const album2 = getAlbums(['any_id_3', 'any_id_4']);
+      expect(fetchStub).to.be.calledWith('https://api.spotify.com/v1/albums/?ids=any_id_3,any_id_4');
+    });
+    it('should return the correct data from promise', async () => {
+      fetchPromise.resolve({ json: () => [{ title: 'title 1' }, { title: 'title 2' }] });
+      const album = await getAlbums(['any_id_1', 'any_id_2']);
+      expect(album).to.be.an('array');
+      expect(album).to.be.eql([{ title: 'title 1' }, { title: 'title 2' }]);
     });
   });
 });
