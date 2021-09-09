@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf lib && babel --out-dir lib src",
+    "build:umd": "webpack --output-filename spotify-wrapper.umd.js",
+    "build:all": "yarn build && yarn build:umd",
     "lint": "eslint src/*.js",
     "run-file": "babel-node",
     "test": "mocha tests/**/*.spec.js",
@@ -22,11 +24,14 @@
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.0",
     "@babel/register": "^7.15.3",
+    "babel-loader": "^8.2.2",
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
-    "mocha": "^9.1.1"
+    "mocha": "^9.1.1",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
   },
   "dependencies": {
     "@babel/cli": "^7.14.8",
