@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Wrapper</title>
+</head>
+<body>
+  <div id="albums"></div>
+  <script src="../dist/spotify-wrapper.umd.js"></script>
+  <script>
+    const albumsEl = document.getElementById('albums')
+
+    async function loadAlbums() {
+      const response = await spotifyWrapper.searchAlbums("Papi")
+      const imagesEls = response.albums.items
+                          .map(album => `<img src="${album.images[0].url}" alt="${album.name}" />`)
+                          .join('')
+
+      console.log(imagesEls)
+
+      albumsEl.innerHTML = imagesEls
+    }
+
+    loadAlbums()
+  </script>
+</body>
+</html>

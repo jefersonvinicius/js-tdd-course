@@ -1,7 +1,4 @@
-import * as search from './search';
-import * as album from './album';
+import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks } from './search';
+import { getAlbum, getAlbums, getAlbumTracks } from './album';
 
-module.exports = {
-  ...search,
-  ...album,
-};
+export { search, searchAlbums, searchArtists, searchPlaylists, searchTracks, getAlbum, getAlbums, getAlbumTracks };

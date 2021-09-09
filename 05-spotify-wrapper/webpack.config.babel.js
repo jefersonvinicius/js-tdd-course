@@ -5,8 +5,10 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: join(__dirname, 'dist'),
-    libraryTarget: 'umd',
-    library: 'spotifyWrapper',
+    library: {
+      name: 'spotifyWrapper',
+      type: 'umd',
+    },
   },
   devtool: 'source-map',
   module: {
