@@ -11,6 +11,8 @@
     const albumsEl = document.getElementById('albums')
 
     async function loadAlbums() {
+      spotifyWrapper.register('BQBmFQPER-qr5cCAGEOFvhD5Pajm5Qacx9KUMJ0LmITtVSDfqqB3VakEq0st0JePbV-zk6FfLRj9vX8VozMnsMBfQ6eEdotqI6Rsa8yTbCjc1EJ06sCZQpBN-ay0OhDVSIlIxSj8Zek4bYtKNlB9xyENjwV0WTUVj1s')
+
       const response = await spotifyWrapper.searchAlbums("Papi")
       const imagesEls = response.albums.items
                           .map(album => `<img src="${album.images[0].url}" alt="${album.name}" />`)
