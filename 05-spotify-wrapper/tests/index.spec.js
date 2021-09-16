@@ -78,5 +78,13 @@ describe('SpotifyWrapper', () => {
       spotify.request('any_url');
       expect(fetchStub).to.have.been.calledWith('any_url', expectedHeaders);
     });
+
+    it('should parse response to json data', async () => {
+      fetchPromise.resolve({ json: () => ({ data: 'any' }) });
+      const token = 'any';
+      const spotify = new SpotifyWrapper({ token });
+      const response = await spotify.request('any_url');
+      expect(response).to.be.eql({ data: 'any' });
+    });
   });
 });

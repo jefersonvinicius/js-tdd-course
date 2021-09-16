@@ -1,7 +1,7 @@
 export default function album() {
   return {
-    getAlbums: (ids) => this.request(`${this.apiURL}/albums/?ids=${ids}`).then((response) => response.json()),
-    getAlbum: (id) => this.request(`${this.apiURL}/albums/${id}`).then((response) => response.json()),
-    getTracks: (id) => this.request(`${this.apiURL}/albums/${id}/tracks`).then((response) => response.json()),
+    getAlbums: (ids) => this.request(`${this.apiURL}/albums/?ids=${ids}`),
+    getAlbum: (id) => this.request(`${this.apiURL}/albums/${id}`),
+    getTracks: (id) => this.request(`${this.apiURL}/albums/${id}/tracks`),
   };
 }
