@@ -1,5 +1,0 @@
-on:
-  push:
-    paths:
-      - '05-spotify-wrapper/*'
-  
