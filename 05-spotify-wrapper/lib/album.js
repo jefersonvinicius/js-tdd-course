@@ -3,26 +3,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAlbums = getAlbums;
-exports.getAlbum = getAlbum;
-exports.getAlbumTracks = getAlbumTracks;
+exports["default"] = album;
 
-var _config = require("./config");
+function album() {
+  var _this = this;
 
-function getAlbums(ids) {
-  return fetch("".concat(_config.API_URL, "/albums/?ids=").concat(ids)).then(function (response) {
-    return response.json();
-  });
-}
-
-function getAlbum(albumId) {
-  return fetch("".concat(_config.API_URL, "/albums/").concat(albumId)).then(function (response) {
-    return response.json();
-  });
-}
-
-function getAlbumTracks(id) {
-  return fetch("".concat(_config.API_URL, "/albums/").concat(id, "/tracks")).then(function (response) {
-    return response.json();
-  });
+  return {
+    getAlbums: function getAlbums(ids) {
+      return _this.request("".concat(_this.apiURL, "/albums/?ids=").concat(ids));
+    },
+    getAlbum: function getAlbum(id) {
+      return _this.request("".concat(_this.apiURL, "/albums/").concat(id));
+    },
+    getTracks: function getTracks(id) {
+      return _this.request("".concat(_this.apiURL, "/albums/").concat(id, "/tracks"));
+    }
+  };
 }

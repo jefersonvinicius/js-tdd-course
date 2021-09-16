@@ -6,8 +6,9 @@ module.exports = {
   output: {
     path: join(__dirname, 'dist'),
     library: {
-      name: 'spotifyWrapper',
+      name: 'SpotifyWrapper',
       type: 'umd',
+      export: 'default',
     },
   },
   devtool: 'source-map',

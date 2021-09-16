@@ -3,36 +3,29 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.search = search;
-exports.searchAlbums = searchAlbums;
-exports.searchArtists = searchArtists;
-exports.searchTracks = searchTracks;
-exports.searchPlaylists = searchPlaylists;
+exports["default"] = search;
 
 var _config = require("./config");
 
-function search(query, type) {
-  return fetch("".concat(_config.API_URL, "/search?q=").concat(query, "&type=").concat(type), {
-    headers: {
-      Authorization: "Bearer ".concat(global.GLOBAL_SPOTIFY_TOKEN)
+function searcher(query, type) {
+  return this.request("".concat(_config.API_URL, "/search?q=").concat(query, "&type=").concat(type));
+}
+
+function search() {
+  var _this = this;
+
+  return {
+    albums: function albums(query) {
+      return searcher.bind(_this, query, 'album')();
+    },
+    artists: function artists(query) {
+      return searcher.bind(_this, query, 'artist')();
+    },
+    tracks: function tracks(query) {
+      return searcher.bind(_this, query, 'track')();
+    },
+    playlists: function playlists(query) {
+      return searcher.bind(_this, query, 'playlist')();
     }
-  }).then(function (response) {
-    return response.json();
-  });
-}
-
-function searchAlbums(query) {
-  return search(query, 'album');
-}
-
-function searchArtists(query) {
-  return search(query, 'artist');
-}
-
-function searchTracks(query) {
-  return search(query, 'track');
-}
-
-function searchPlaylists(query) {
-  return search(query, 'playlist');
+  };
 }
