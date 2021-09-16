@@ -1,25 +1,14 @@
 import { API_URL } from './config';
 
-export function search(query, type) {
-  return fetch(`${API_URL}/search?q=${query}&type=${type}`, {
-    headers: {
-      Authorization: `Bearer ${global.GLOBAL_SPOTIFY_TOKEN}`,
-    },
-  }).then((response) => response.json());
+function searcher(query, type) {
+  return this.request(`${API_URL}/search?q=${query}&type=${type}`);
 }
 
-export function searchAlbums(query) {
-  return search(query, 'album');
-}
-
-export function searchArtists(query) {
-  return search(query, 'artist');
-}
-
-export function searchTracks(query) {
-  return search(query, 'track');
-}
-
-export function searchPlaylists(query) {
-  return search(query, 'playlist');
+export default function search() {
+  return {
+    albums: (query) => searcher.bind(this, query, 'album')(),
+    artists: (query) => searcher.bind(this, query, 'artist')(),
+    tracks: (query) => searcher.bind(this, query, 'track')(),
+    playlists: (query) => searcher.bind(this, query, 'playlist')(),
+  };
 }

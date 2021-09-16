@@ -1,18 +1,6 @@
-import { search, searchAlbums, searchArtists, searchPlaylists, searchTracks } from './search';
-import album, { getAlbum, getAlbums, getAlbumTracks } from './album';
+import search from './search';
+import album from './album';
 import { API_URL, register } from './config';
-
-// export {
-//   search,
-//   searchAlbums,
-//   searchArtists,
-//   searchPlaylists,
-//   searchTracks,
-//   getAlbum,
-//   getAlbums,
-//   getAlbumTracks,
-//   register,
-// };
 
 export default class SpotifyWrapper {
   constructor(options = {}) {
@@ -22,6 +10,7 @@ export default class SpotifyWrapper {
     this.token = options.token;
 
     this.album = album.bind(this)();
+    this.search = search.bind(this)();
   }
 
   request(url) {
