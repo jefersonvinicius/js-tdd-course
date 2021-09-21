@@ -34,6 +34,7 @@
     "@babel/cli": "^7.14.8",
     "core-js": "^3.16.4",
     "nyc": "^15.1.0",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "spotify-wrapper": "^2.1.0"
   }
 }
