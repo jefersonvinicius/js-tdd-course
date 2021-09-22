@@ -12,6 +12,7 @@
     },
     "rules": {
       "no-unused-expressions": "off",
-      "object-curly-newline": "off"
+      "object-curly-newline": "off",
+      "no-param-reassign": "off"
     }
 }
