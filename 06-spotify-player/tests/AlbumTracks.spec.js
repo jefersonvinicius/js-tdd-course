@@ -2,6 +2,7 @@ import 'jsdom-global/register';
 import { expect } from 'chai';
 import dedent from 'dedent-js';
 import renderAlbumTracks from '../src/AlbumTracks';
+import convertToHumanTime from '../src/ConvertToHumanTime';
 
 describe('AlbumTracks', () => {
   it('should create and append the markup given a correct data', () => {
@@ -19,7 +20,7 @@ describe('AlbumTracks', () => {
       <div class="music" data-preview-track="https://p.scdn.co/mp3-preview/3ca335232913362d41cb9879dd4ffaa20a1e4989?cid=774b29d4f13844c495f206cafdad9c86">
         <p class="music-number">1</p>
         <p class="music-title">Around the World</p>
-        <p class="music-duration">238733</p>
+        <p class="music-duration">${convertToHumanTime(238733)}</p>
       </div>`;
 
     const element = document.createElement('div');
@@ -49,12 +50,12 @@ describe('AlbumTracks', () => {
       <div class="music" data-preview-track="https://p.scdn.co/mp3-preview/3ca335232913362d41cb9879dd4ffaa20a1e4989?cid=774b29d4f13844c495f206cafdad9c86">
         <p class="music-number">1</p>
         <p class="music-title">Around the World</p>
-        <p class="music-duration">238733</p>
+        <p class="music-duration">${convertToHumanTime(238733)}</p>
       </div>
       <div class="music" data-preview-track="https://p.scdn.co/mp3-preview/3ca335232913362d41cb9879dd4ffaa20a1e4989?cid=774b29d4f13844c495f206cafdad9c86">
         <p class="music-number">1</p>
         <p class="music-title">Around the World</p>
-        <p class="music-duration">238733</p>
+        <p class="music-duration">${convertToHumanTime(238733)}</p>
       </div>`;
 
     const element = document.createElement('div');
