@@ -1,0 +1,35 @@
+{
+  "name": "btc-converter",
+  "version": "1.0.0",
+  "description": "Convert btc to any currency",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/*.js",
+    "test": "mocha tests/**/*.spec.js",
+    "test:coverage": "nyc mocha tests/**/*.spec.js"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Jeferson Vinicius",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/register": "^7.15.3",
+    "chai": "^4.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "mocha": "^9.1.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "commander": "^8.2.0",
+    "core-js": "^3.16.4",
+    "nyc": "^15.1.0",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
