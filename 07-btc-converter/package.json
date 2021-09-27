@@ -6,7 +6,12 @@
   "scripts": {
     "lint": "eslint src/*.js",
     "test": "mocha tests/**/*.spec.js",
-    "test:coverage": "nyc mocha tests/**/*.spec.js"
+    "test:coverage": "nyc mocha tests/**/*.spec.js",
+    "build": "rimraf bin && babel --out-dir bin src"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "btc-converter": "bin/main.js"
   },
   "keywords": [
     "js",
