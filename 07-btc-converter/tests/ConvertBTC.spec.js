@@ -1,7 +1,8 @@
 const nock = require('nock');
 const chai = require('chai');
+const chalk = require('chalk');
 const chaiAsPromised = require('chai-as-promised');
-const { convertBTC, InvalidCurrency } = require('../src/ConvertBTC');
+const { convertBTC, InvalidCurrency, btcPresenter } = require('../src/ConvertBTC');
 
 chai.use(chaiAsPromised);
 
@@ -53,20 +54,28 @@ describe('ConvertBTC', () => {
 
   it('should use USD and 1 as default values', async () => {
     nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
-    expect(await convertBTC()).to.be.equal('1 BTC to USD = 42105.00');
+    expect(await convertBTC()).to.be.deep.equals({ amount: 1, currency: 'USD', total: 42105.0 });
   });
 
   it('should use USD and 3 as parameters values', async () => {
     nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
-    expect(await convertBTC('USD', 3)).to.be.equal('3 BTC to USD = 126315.00');
+    expect(await convertBTC('USD', 3)).to.be.deep.equals({ amount: 3, currency: 'USD', total: 126315.0 });
   });
 
   it('should use EUR and 3 as parameters values', async () => {
     nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'EUR' }).reply(200, responseMock);
-    expect(await convertBTC('EUR', 3)).to.be.equal('3 BTC to EUR = 108037.22');
+    expect(await convertBTC('EUR', 3)).to.be.deep.equals({ amount: 3, currency: 'EUR', total: 108037.21949999999 });
   });
 
   it('should get InvalidCurrency when currency is"nt available', async () => {
     expect(convertBTC('invalid_currency', 3)).to.eventually.rejectedWith(new InvalidCurrency('invalid_currency'));
+  });
+});
+
+describe('btcPresenter', () => {
+  it('should colorize to present the conversion ', async () => {
+    const data = { amount: 1, currency: 'USD', total: 42105.0 };
+    const expectText = `${chalk.blue(1)} BTC to ${chalk.yellow('USD')} = ${chalk.green('42105.00')}`;
+    expect(btcPresenter(data)).to.be.equal(expectText);
   });
 });
