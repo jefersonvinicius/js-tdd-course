@@ -48,26 +48,25 @@ describe('ConvertBTC', () => {
       num_cryptocurrencies: 3105,
       error: null,
     },
-    isFalse: true,
+    isMock: true,
   };
 
   it('should use USD and 1 as default values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
     expect(await convertBTC()).to.be.equal('1 BTC to USD = 42105.00');
   });
 
   it('should use USD and 3 as parameters values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
     expect(await convertBTC('USD', 3)).to.be.equal('3 BTC to USD = 126315.00');
   });
 
   it('should use EUR and 3 as parameters values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'EUR' }).reply(200, responseMock);
     expect(await convertBTC('EUR', 3)).to.be.equal('3 BTC to EUR = 108037.22');
   });
 
   it('should get InvalidCurrency when currency is"nt available', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').reply(200, responseMock);
     expect(convertBTC('invalid_currency', 3)).to.eventually.rejectedWith(new InvalidCurrency('invalid_currency'));
   });
 });
