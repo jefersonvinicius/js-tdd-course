@@ -15,7 +15,7 @@ class InvalidCurrency extends Error {
 
 exports.convertBTC = async (currency = 'USD', amount = 1) => {
   if (!AVAILABLE_CURRENCIES.includes(currency)) throw new InvalidCurrency(currency);
-  const { data } = await api.get(`/ticker/bitcoin?convert=${currency}`);
+  const { data } = await api.get(`/ticker/bitcoin/?convert=${currency}`);
   const btcValue = data.data[1].quotes[currency].price;
   return {
     amount,

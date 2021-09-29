@@ -53,17 +53,17 @@ describe('ConvertBTC', () => {
   };
 
   it('should use USD and 1 as default values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin/').query({ convert: 'USD' }).reply(200, responseMock);
     expect(await convertBTC()).to.be.deep.equals({ amount: 1, currency: 'USD', total: 42105.0 });
   });
 
   it('should use USD and 3 as parameters values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'USD' }).reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin/').query({ convert: 'USD' }).reply(200, responseMock);
     expect(await convertBTC('USD', 3)).to.be.deep.equals({ amount: 3, currency: 'USD', total: 126315.0 });
   });
 
   it('should use EUR and 3 as parameters values', async () => {
-    nock('https://api.alternative.me/v2').get('/ticker/bitcoin').query({ convert: 'EUR' }).reply(200, responseMock);
+    nock('https://api.alternative.me/v2').get('/ticker/bitcoin/').query({ convert: 'EUR' }).reply(200, responseMock);
     expect(await convertBTC('EUR', 3)).to.be.deep.equals({ amount: 3, currency: 'EUR', total: 108037.21949999999 });
   });
 
