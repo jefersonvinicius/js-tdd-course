@@ -12,12 +12,25 @@ program
   .option('-a, --amount <amount>', 'Amount to be converted', 1)
   .parse(process.argv);
 
-const options = program.opts();
-convertBTC(options.currency, options.amount)
-  .then((result) => {
-    console.log(btcPresenter(result));
-  })
-  .catch((error) => {
-    console.log(error.response);
-    console.log(chalk.red(error.message));
+async function start() {
+  const ora = (await import('ora')).default;
+
+  const options = program.opts();
+
+  const spinner = ora({
+    text: 'Fetching...',
+    color: 'yellow',
   });
+
+  spinner.start();
+  try {
+    const result = await convertBTC(options.currency, options.amount);
+    spinner.stop();
+    console.log(btcPresenter(result));
+  } catch (error) {
+    spinner.stop();
+    console.log(chalk.red(error.message));
+  }
+}
+
+start();

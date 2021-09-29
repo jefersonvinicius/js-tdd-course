@@ -39,6 +39,7 @@
     "commander": "^8.2.0",
     "core-js": "^3.16.4",
     "nyc": "^15.1.0",
+    "ora": "^6.0.1",
     "regenerator-runtime": "^0.13.9"
   }
 }
