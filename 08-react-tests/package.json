@@ -1,5 +1,5 @@
 {
-  "name": "lyef-react-component",
+  "name": "react-full-header",
   "version": "1.1.2",
   "description": "An opinionated boilerplate for reusable and declouped react components.",
   "main": "dist/Main.js",
