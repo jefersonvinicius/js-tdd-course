@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Component = ({ title }) => {
-    return <header>{title && <h1>{title}</h1>}</header>;
-};
+function Component({ title, subtitle }) {
+    return (
+        <header>
+            {title && <h1>{title}</h1>}
+            {subtitle && <h2>{subtitle}</h2>}
+        </header>
+    );
+}
 
 const propTypes = {
     title: PropTypes.string,
+    subtitle: PropTypes.string,
 };
 
 Component.propTypes = propTypes;
