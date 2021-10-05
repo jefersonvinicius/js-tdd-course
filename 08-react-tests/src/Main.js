@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 const defaultProps = {
     bgColor: '#ccc',
+    textColor: '#fff',
 };
 
-function Component({ title, subtitle, bgColor }) {
+function Component({ title, subtitle, bgColor, textColor }) {
     const headerStyles = {
         backgroundColor: bgColor,
+        color: textColor,
     };
 
     return (
@@ -22,6 +24,7 @@ const propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     bgColor: PropTypes.string,
+    textColor: PropTypes.string,
 };
 
 Component.propTypes = propTypes;

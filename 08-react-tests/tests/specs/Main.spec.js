@@ -52,4 +52,18 @@ describe('FullHeader', () => {
             expect(wrapper).to.have.style('background-color').equal('#f01');
         });
     });
+
+    describe('textColor prop', () => {
+        it('should use #fff as default textColor', () => {
+            const wrapper = shallow(<FullHeader title="TDD" />);
+            expect(wrapper).to.have.style('color').equal('#fff');
+        });
+
+        it('should use #f01 as custom textColor', () => {
+            const wrapper = shallow(
+                <FullHeader title="TDD" textColor="#f01" />
+            );
+            expect(wrapper).to.have.style('color').equal('#f01');
+        });
+    });
 });
