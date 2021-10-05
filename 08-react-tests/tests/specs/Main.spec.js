@@ -78,4 +78,18 @@ describe('FullHeader', () => {
             expect(wrapper).to.have.style('font-family').equal('cursive');
         });
     });
+
+    describe('bgImg prop', () => {
+        it('should has empty background image when the prop bgImg is"nt passed', () => {
+            const wrapper = shallow(<FullHeader title="TDD" />);
+            expect(wrapper).to.have.style('background-image').equal('url()');
+        });
+
+        it('should has background image equals bgImg prop', () => {
+            const wrapper = shallow(<FullHeader title="TDD" bgImg="bg.jpg" />);
+            expect(wrapper)
+                .to.have.style('background-image')
+                .equal('url(bg.jpg)');
+        });
+    });
 });
