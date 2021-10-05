@@ -66,4 +66,16 @@ describe('FullHeader', () => {
             expect(wrapper).to.have.style('color').equal('#f01');
         });
     });
+
+    describe('font prop', () => {
+        it('should use sans-serif as default font', () => {
+            const wrapper = shallow(<FullHeader title="TDD" />);
+            expect(wrapper).to.have.style('font-family').equal('sans-serif');
+        });
+
+        it('should use cursive as custom font', () => {
+            const wrapper = shallow(<FullHeader title="TDD" font="cursive" />);
+            expect(wrapper).to.have.style('font-family').equal('cursive');
+        });
+    });
 });

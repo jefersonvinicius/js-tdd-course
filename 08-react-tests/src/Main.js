@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 const defaultProps = {
     bgColor: '#ccc',
     textColor: '#fff',
+    font: 'sans-serif',
 };
 
-function Component({ title, subtitle, bgColor, textColor }) {
+function Component({ title, subtitle, bgColor, textColor, font }) {
     const headerStyles = {
         backgroundColor: bgColor,
         color: textColor,
+        fontFamily: font,
     };
 
     return (
@@ -25,6 +27,7 @@ const propTypes = {
     subtitle: PropTypes.string,
     bgColor: PropTypes.string,
     textColor: PropTypes.string,
+    font: PropTypes.string,
 };
 
 Component.propTypes = propTypes;
