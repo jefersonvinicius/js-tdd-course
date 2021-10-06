@@ -14,7 +14,15 @@ const defaultProps = {
     bgImg: '',
 };
 
-function Component({ title, subtitle, bgColor, textColor, font, bgImg }) {
+function Component({
+    title,
+    subtitle,
+    bgColor,
+    textColor,
+    font,
+    bgImg,
+    video,
+}) {
     const headerStyles = {
         ...headerStyle,
         backgroundColor: bgColor,
@@ -29,6 +37,7 @@ function Component({ title, subtitle, bgColor, textColor, font, bgImg }) {
                 {title && <h1 style={titleStyle}>{title}</h1>}
                 {subtitle && <h2 style={subtitleStyle}>{subtitle}</h2>}
             </div>
+            {video && <video src={video} autoPlay loop muted />}
         </header>
     );
 }
@@ -40,6 +49,7 @@ const propTypes = {
     textColor: PropTypes.string,
     font: PropTypes.string,
     bgImg: PropTypes.string,
+    video: PropTypes.string,
 };
 
 Component.propTypes = propTypes;

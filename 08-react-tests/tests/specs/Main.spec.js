@@ -92,4 +92,27 @@ describe('FullHeader', () => {
                 .equal('url(bg.jpg)');
         });
     });
+
+    describe('video prop', () => {
+        it('should have video tag when a video is passed', () => {
+            const wrapper = shallow(
+                <FullHeader title="TDD" video="my_video.mp4" />
+            );
+            expect(wrapper.find('video')).to.have.length(1);
+        });
+
+        it('should not have video tag when a video is not passed', () => {
+            const wrapper = shallow(<FullHeader />);
+            expect(wrapper.find('video')).to.have.length(0);
+        });
+
+        it('should have h1 tag with the title passed', () => {
+            const wrapper = shallow(
+                <FullHeader title="TDD" video="my_video.mp4" />
+            );
+            expect(wrapper.find('video').props().src).to.be.equal(
+                'my_video.mp4'
+            );
+        });
+    });
 });
