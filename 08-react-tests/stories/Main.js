@@ -35,7 +35,7 @@ storiesOf('FullHeader', module)
         <FullHeader
             title="TDD"
             subtitle="Curso de JS com TDD na prática"
-            bgImg="https://raw.githubusercontent.com/willianjusten/photo-example/master/iceland-glacier.jpg"
+            bgImg="https://www.cliqueiachei.com.br/logotipo-logomarca/250/logotipo-Adriano-29610.png"
         />
     ))
     .add('with title, subtitle, video', () => (
