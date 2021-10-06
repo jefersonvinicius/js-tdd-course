@@ -5,6 +5,7 @@ import {
     titleStyle,
     headerStyle,
     subtitleStyle,
+    videoStyle,
 } from './styles';
 
 const defaultProps = {
@@ -37,7 +38,9 @@ function Component({
                 {title && <h1 style={titleStyle}>{title}</h1>}
                 {subtitle && <h2 style={subtitleStyle}>{subtitle}</h2>}
             </div>
-            {video && <video src={video} autoPlay loop muted />}
+            {video && (
+                <video style={videoStyle} src={video} autoPlay loop muted />
+            )}
         </header>
     );
 }
